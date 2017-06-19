@@ -10,14 +10,20 @@ namespace VahidJalili.Di4.SimDataGen
     {
         static void Main(string[] args)
         {
-            var simData = new Di4DataSim(Environment.CurrentDirectory);
-            simData.Generate(
-                sampleCount: 20,
-                maxICount: 1000,
-                chrCount: 23,
-                kDis: new ErlangDistribution(1, 20),
-                lambdaDis: new ErlangDistribution(1, 2),
-                fileSizeProb: 5);
+            var options = new CommandLineOptions();
+            if (CommandLine.Parser.Default.ParseArguments(args, options))
+            {
+                var simData = new Di4DataSim(Environment.CurrentDirectory);
+                simData.Generate(
+                    sampleCount: options.sampleCount,
+                    maxICount: options.maxICount,
+                    chrCount: options.chrCount,
+                    kDis: new ErlangDistribution(options.kk, options.kl),
+                    lambdaDis: new ErlangDistribution(options.lk, options.ll),
+                    fileSizeProb: options.fileSizeProb);
+            }
+            else
+                Console.WriteLine("Invalid arguments");
         }
     }
 }
