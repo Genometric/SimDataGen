@@ -10,11 +10,14 @@ namespace VahidJalili.Di4.SimDataGen
 {
     internal class CommandLineOptions
     {
-        [Option('c', "count", Required = true, HelpText = "Sets the number of simulated samples to be generated.")]
+        [Option('c', "count", Required = true, HelpText = "Sets the number of artificial replicates to be generated.")]
         public int sampleCount { set; get; }
 
-        [Option('i', "interval", Required = true, HelpText = "Sets the maximum number of intervals to be generated.")]
+        [Option('i', "interval", Required = true, HelpText = "Sets the maximum number of intervals to be generated for each sample.")]
         public int maxICount { set; get; }
+
+        [Option('s', "size", Required = true, HelpText = "File size probability.")]
+        public int fileSizeProb { set; get; }
 
         [Option('r', "chr", Required = true, HelpText = "Sets the number of chromosomes to be generated.")]
         public int chrCount { set; get; }
@@ -30,9 +33,6 @@ namespace VahidJalili.Di4.SimDataGen
 
         [Option('L', "ll", Required = true, HelpText = ".")]
         public int ll { set; get; }
-
-        [Option('s', "size", Required = true, HelpText = "File size probability.")]
-        public int fileSizeProb { set; get; }
 
 
         [ParserState]

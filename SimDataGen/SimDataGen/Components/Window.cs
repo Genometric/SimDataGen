@@ -14,14 +14,10 @@ namespace VahidJalili.Di4.SimDataGen
             _left = left;
             _right = right;
             _length = _right - _left;
-
             this.k = k;
             this.lambda = lambda;
-
             _ErlangDistribution = new ErlangDistribution(k, lambda, left, right);
-
-            _nameAlphabet = new char[] { 'H', 'A', 'M', 'E', 'D', 'V', 'I', '5', '3', '0', '1' };
-
+            _nameAlphabet = new char[] { 'A', 'D', 'E', 'H', 'I', 'M', 'V', '0', '1', '3', '5' };
             _random = new Random();
             _maxIntervalLength = maxIntervalLength;
         }

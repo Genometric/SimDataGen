@@ -155,12 +155,12 @@ namespace VahidJalili.Di4.SimDataGen
         private int[] GetChrShare()
         {
             int[] rtv = new int[_chrCount];
-            int chrSum = (_chrCount * (_chrCount + 1)) / 2;
+            int chrSumOfSequence = (_chrCount * (_chrCount + 1)) / 2;
 
             int nDistributedRegions = 0;
             for (int chr = 0; chr < _chrCount; chr++)
             {
-                rtv[chr] = (int)Math.Floor((_chrCount - chr) * _maxICount / (double)chrSum);
+                rtv[chr] = (int)Math.Floor((_chrCount - chr) * _maxICount / (double)chrSumOfSequence);
                 nDistributedRegions += rtv[chr];
             }
 
