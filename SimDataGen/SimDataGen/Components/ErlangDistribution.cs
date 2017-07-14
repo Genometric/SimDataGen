@@ -50,8 +50,7 @@ namespace VahidJalili.Di4.SimDataGen
         {
             do { _x = _random.NextDouble(); }
             while (_x == 0);
-            int length = maxValue - minValue;
-            return (int)Math.Floor(((length * GetErlangNo(_x)) / _maxErlang) + minValue);
+            return (int)Math.Floor((((maxValue - minValue) * GetErlangNo(_x)) / _maxErlang) + minValue);
         }
         private double GetErlangNo(double x)
         {
