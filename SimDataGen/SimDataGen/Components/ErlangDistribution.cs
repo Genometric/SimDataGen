@@ -8,17 +8,7 @@ namespace VahidJalili.Di4.SimDataGen
 {
     internal class ErlangDistribution
     {
-        public ErlangDistribution(int k, int lambda)
-        {
-            this.k = k > 0 ? k : 1;
-            this.lambda = lambda > 0 ? lambda : 1;
-            _maxErlang = GetErlangNo((this.k - 1) / (double)this.lambda);
-
-            minValue = 1;
-            maxValue = 40;
-            _length = maxValue - minValue;
-            _random = new Random();
-        }
+        public ErlangDistribution(int k, int lambda) : this(k, lambda, 1, 40) { }
         internal ErlangDistribution(int k, int lambda, int minValue, int maxValue)
         {
             this.k = k > 0 ? k : 1;
