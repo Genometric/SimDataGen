@@ -17,10 +17,7 @@ namespace VahidJalili.Di4.SimDataGen
                 simData.Generate(
                     sampleCount: options.sampleCount,
                     maxICount: options.maxICount,
-                    chrCount: options.chrCount,
-                    kDis: new ErlangDistribution(options.kk, options.kl),
-                    lambdaDis: new ErlangDistribution(options.lk, options.ll),
-                    fileSizeProb: options.fileSizeProb);
+                    chrCount: options.chrCount);
             }
             else
                 Console.WriteLine("Invalid arguments");

@@ -14,17 +14,21 @@ namespace VahidJalili.Di4.SimDataGen
             _outputDirectory = outputDirectory + Path.DirectorySeparatorChar;
             _random = new Random();
             _windows = new List<Window>();
+            var prop = Properties.SimData.Default;
+            _kDis = new ErlangDistribution(prop.kk, prop.kl);
+            _lambdaDis = new ErlangDistribution(prop.lk, prop.ll);
         }
 
-        private const int _minGap = 50;
-        private const int _maxGap = 100;
-        private const int _maxLenght = 100;
-        private const string _fileExtension = "bed";
+        private int _minGap { get { return Properties.SimData.Default.minGapBetweenWindows; } }
+        private int _maxGap { get { return Properties.SimData.Default.maxGapBetweenWindows; } }
+        private int _maxLenght { get { return Properties.SimData.Default.maxIntervalLength; } }
+        private string _fileExtension { get { return Properties.SimData.Default.outputFormat; } }
+        private int _fileSizeProb { get { return Properties.SimData.Default.fileSizeProbability; } }
 
 
         private int _chrCount { set; get; }
         private int _maxICount { set; get; }
-        private int _fileSizeProb { set; get; }
+        
         private string _outputDirectory { set; get; }
         private ErlangDistribution _kDis { set; get; }
         private ErlangDistribution _lambdaDis { set; get; }
@@ -38,12 +42,9 @@ namespace VahidJalili.Di4.SimDataGen
             "chr16", "chr17", "chr18", "chr19", "chr20",
             "chr21", "chr22", "chrX", "chrY" };
 
-        public void Generate(int sampleCount, int maxICount, int chrCount, ErlangDistribution kDis, ErlangDistribution lambdaDis, int fileSizeProb)
+        public void Generate(int sampleCount, int maxICount, int chrCount)
         {
-            _kDis = kDis;
-            _lambdaDis = lambdaDis;
             _maxICount = maxICount;
-            _fileSizeProb = fileSizeProb;
             _chrCount = chrCount;
 
             string outputPath = _outputDirectory + "count_" + maxICount.ToString();
